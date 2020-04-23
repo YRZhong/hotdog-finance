@@ -1,13 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { Button, Form, Input, Card } from 'antd'
-import { FormProps } from 'antd/es/form'
 import { useForm } from 'antd/es/form/util'
 import style from './index.module.css'
 
-interface IProps extends FormProps {}
-
-const Login: React.FC<IProps> = (props) => {
+const Login: React.FC<{}> = (props) => {
   const layout = {
     labelCol: { span: 4 },
     wrapperCol: { span: 16 }

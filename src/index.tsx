@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import Login from './page/login'
+import LayoutComponent from './layout'
 import * as serviceWorker from './serviceWorker'
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/es/locale/zh_CN'
@@ -12,6 +13,7 @@ const App: React.FC<RouteComponentProps> = () => {
     <Suspense fallback={<div>loading...</div>}>
       <Switch>
         <Route exact path="/login" component={Login}></Route>
+        <Route path="/" component={LayoutComponent}></Route>
       </Switch>
     </Suspense>
   )
