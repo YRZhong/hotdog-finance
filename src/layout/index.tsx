@@ -13,6 +13,8 @@ interface MenuType {
 }
 
 const { Header, Sider, Content } = Layout
+
+//测试数据
 const menu: MenuType[] = [
   {
     key: 'bookKeep',
@@ -26,6 +28,8 @@ const menu: MenuType[] = [
   }
 ]
 
+const token = sessionStorage.getItem('token')
+
 /**侧边栏组件 */
 const Sidebar: React.FC<{}> = () => {
   const { pathname } = useLocation()
@@ -38,7 +42,7 @@ const Sidebar: React.FC<{}> = () => {
 
   useEffect(() => {
     updateSidebarMenu(pathname)
-    listen((location) => {
+    return listen((location) => {
       updateSidebarMenu(location.pathname)
     })
   }, []) //eslint-disable-line
@@ -80,16 +84,19 @@ const LayoutComponent: React.FC<{}> = () => {
         <Content>
           <Suspense fallback={<div>loading...</div>}>
             <Switch>
-              {routeMap.map((item) => {
-                return (
-                  <Route
-                    exact
-                    key={item.path}
-                    path={item.path}
-                    component={loadComponent(item.componentPath)}
-                  ></Route>
-                )
-              })}
+              {token ? (
+                routeMap.map((item) => {
+                  return (
+                    <Route
+                      key={item.path}
+                      path={item.path}
+                      component={loadComponent(item.componentPath)}
+                    ></Route>
+                  )
+                })
+              ) : (
+                <Redirect to="/login"></Redirect>
+              )}
               <Redirect exact from="/" to="/bookKeep"></Redirect>
               <Route component={loadComponent('404/index')}></Route>
             </Switch>

@@ -15,8 +15,8 @@ const Login: React.FC<{}> = (props) => {
   const history = useHistory()
   const [form] = useForm()
   const handleLogin = (value: any) => {
-    console.log(value)
-    history.push('/')
+    sessionStorage.setItem('token', value.userName)
+    history.replace('/bookKeep')
   }
 
   return (
