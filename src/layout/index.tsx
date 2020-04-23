@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useState, useEffect, ReactNode } from 'react'
-import { Link, Switch, Route, useLocation, useHistory } from 'react-router-dom'
+import { Link, Switch, Route, Redirect, useLocation, useHistory } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
 import { MoneyCollectOutlined, AlignLeftOutlined } from '@ant-design/icons'
 import { routeMap } from '../route'
@@ -90,6 +90,8 @@ const LayoutComponent: React.FC<{}> = () => {
                   ></Route>
                 )
               })}
+              <Redirect exact from="/" to="/bookKeep"></Redirect>
+              <Route component={loadComponent('404/index')}></Route>
             </Switch>
           </Suspense>
         </Content>

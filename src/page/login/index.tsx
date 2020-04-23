@@ -12,10 +12,8 @@ const Login: React.FC<{}> = (props) => {
   const tailLayout = {
     wrapperCol: { offset: 4, span: 16 }
   }
-
   const history = useHistory()
   const [form] = useForm()
-
   const handleLogin = (value: any) => {
     console.log(value)
     history.push('/')
@@ -23,7 +21,7 @@ const Login: React.FC<{}> = (props) => {
 
   return (
     <div className={style.container}>
-      <Card style={{ width: '40%' }}>
+      <Card hoverable style={{ width: '30%', cursor: 'auto' }}>
         <Form {...layout} form={form} onFinish={handleLogin}>
           <Form.Item name="userName" label="用户名" rules={[{ required: true }]}>
             <Input />
