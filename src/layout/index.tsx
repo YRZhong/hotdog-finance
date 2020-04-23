@@ -28,8 +28,6 @@ const menu: MenuType[] = [
   }
 ]
 
-const token = sessionStorage.getItem('token')
-
 /**侧边栏组件 */
 const Sidebar: React.FC<{}> = () => {
   const { pathname } = useLocation()
@@ -76,6 +74,10 @@ const Sidebar: React.FC<{}> = () => {
 /**Main Layout组件 */
 const LayoutComponent: React.FC<{}> = () => {
   const loadComponent = (name: string) => lazy(() => import(`../page/${name}`)) //动态引入组件
+  const token = sessionStorage.getItem('token')
+  useEffect(() => {
+    console.log('token=====' + token)
+  }, [token])
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sidebar />
