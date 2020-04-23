@@ -47,7 +47,7 @@ const Sidebar: React.FC<{}> = () => {
 
   return (
     <Sider collapsible collapsed={collapsed} onCollapse={() => setCollapsed(!collapsed)}>
-      <div className={style.logo}>Hotdog</div>
+      <div className={style.logo}>Hotdog Finance</div>
       <Menu
         theme="dark"
         mode="inline"
