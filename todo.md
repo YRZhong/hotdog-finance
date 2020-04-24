@@ -5,3 +5,5 @@
 # 调换记账页面中两个 Card 的位置
 
 # 组件库 Bug: Modal 关闭后 Button 仍处于 hover 状态
+
+# 增加支付方式选择框
