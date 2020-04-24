@@ -1,3 +1,9 @@
+.timeLine {
+  /* margin-top: 2rem; */
+}
+
 .card {
-  width: 30vw;
+  margin-top: 2rem;
+  width: 50vw;
+  cursor: auto;
 }
