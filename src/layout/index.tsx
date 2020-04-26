@@ -1,8 +1,14 @@
 import React, { Suspense, lazy, useState, useEffect, ReactNode } from 'react'
 import { Link, Switch, Route, Redirect, useLocation, useHistory } from 'react-router-dom'
-import { Layout, Menu } from 'antd'
-import { MoneyCollectOutlined, AlignLeftOutlined } from '@ant-design/icons'
-import { routeMap } from '../route'
+import { Layout, Menu, Avatar, Dropdown } from 'antd'
+import {
+  MoneyCollectOutlined,
+  AlignLeftOutlined,
+  SettingOutlined,
+  LogoutOutlined,
+  DownOutlined
+} from '@ant-design/icons'
+import { routeMap } from '@/route'
 import style from './index.module.css'
 
 interface MenuType {
@@ -70,6 +76,43 @@ const Sidebar: React.FC<{}> = () => {
 }
 
 /**Header组件 */
+const MyHeader: React.FC<{}> = () => {
+  const { Item } = Menu
+  const history = useHistory()
+  const handleLogout = () => {
+    sessionStorage.removeItem('token')
+    history.replace('/login')
+  }
+  const menu = () => {
+    return (
+      <Menu>
+        <Item>
+          <SettingOutlined /> 个人设置
+        </Item>
+        <Item
+          onClick={() => {
+            handleLogout()
+          }}
+        >
+          <LogoutOutlined /> 退出登录
+        </Item>
+      </Menu>
+    )
+  }
+  return (
+    <Header className={style.header}>
+      <div>
+        <Avatar src="https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-png-transparent.png" />
+        {/* <span className={style.headerUserName}>test</span> */}
+        <Dropdown overlay={menu} trigger={['click']}>
+          <span className={style.headerUserName} onClick={(e) => e.preventDefault()}>
+            Test User <DownOutlined />
+          </span>
+        </Dropdown>
+      </div>
+    </Header>
+  )
+}
 
 /**Main Layout组件 */
 const LayoutComponent: React.FC<{}> = () => {
@@ -82,9 +125,7 @@ const LayoutComponent: React.FC<{}> = () => {
     <Layout style={{ minHeight: '100vh' }}>
       <Sidebar />
       <Layout>
-        <Header className={style.header}>
-          <div>asd</div>
-        </Header>
+        <MyHeader />
         <Content className={style.mainContent}>
           <Suspense fallback={<div>loading...</div>}>
             <Switch>

@@ -5,8 +5,17 @@
 }
 
 .header {
+  display: flex;
+  justify-content: flex-end;
   background: #fff;
-  padding: 0 40px;
+  padding: 0 4rem;
+}
+
+.headerUserName {
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  margin-left: 5px;
+  cursor: pointer;
 }
 
 .logo {
