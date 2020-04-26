@@ -1,5 +1,12 @@
-.siteLayout {
-  background-color: #fff;
+.mainContent {
+  background: #fff;
+  margin: 24px 24px 24px;
+  padding: 24px 24px 24px;
+}
+
+.header {
+  background: #fff;
+  padding: 0 40px;
 }
 
 .logo {

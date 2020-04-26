@@ -42,6 +42,7 @@ const ModalForm: React.FC<ModalFormProps> = ({ visible, onConfirm, onCancel }) =
       .then((res) => {
         form.resetFields()
         onConfirm(res as Values)
+        message.success('记录成功')
       })
       .catch((err) => {
         console.log(err)

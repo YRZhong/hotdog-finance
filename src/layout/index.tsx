@@ -73,7 +73,7 @@ const Sidebar: React.FC<{}> = () => {
 
 /**Main Layout组件 */
 const LayoutComponent: React.FC<{}> = () => {
-  const loadComponent = (name: string) => lazy(() => import(`../page/${name}`)) //动态引入组件
+  const loadComponent = (name: string) => lazy(() => import(`@/page/${name}`)) //动态引入组件
   const token = sessionStorage.getItem('token')
   useEffect(() => {
     console.log('token=====' + token)
@@ -81,9 +81,11 @@ const LayoutComponent: React.FC<{}> = () => {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sidebar />
-      <Layout className={style.siteLayout} style={{ padding: '0 24px 24px' }}>
-        <Header className={style.siteLayout} style={{ padding: 0 }}></Header>
-        <Content>
+      <Layout>
+        <Header className={style.header}>
+          <div>asd</div>
+        </Header>
+        <Content className={style.mainContent}>
           <Suspense fallback={<div>loading...</div>}>
             <Switch>
               {token ? (
