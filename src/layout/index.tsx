@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useState, useEffect, ReactNode } from 'react'
 import { Link, Switch, Route, Redirect, useLocation, useHistory } from 'react-router-dom'
-import { Layout, Menu, Avatar, Dropdown } from 'antd'
+import { Layout, Menu, Avatar, Dropdown, message } from 'antd'
 import {
   MoneyCollectOutlined,
   AlignLeftOutlined,
@@ -77,11 +77,13 @@ const Sidebar: React.FC<{}> = () => {
 
 /**Header组件 */
 const MyHeader: React.FC<{}> = () => {
+  const userName: string = sessionStorage.getItem('token') || ''
   const { Item } = Menu
   const history = useHistory()
   const handleLogout = () => {
     sessionStorage.removeItem('token')
     history.replace('/login')
+    message.info('已退出登录')
   }
   const menu = () => {
     return (
@@ -102,11 +104,10 @@ const MyHeader: React.FC<{}> = () => {
   return (
     <Header className={style.header}>
       <div>
-        <Avatar src="https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-png-transparent.png" />
-        {/* <span className={style.headerUserName}>test</span> */}
+        <Avatar className={style.avatar}>{userName.slice(0, 1).toUpperCase()}</Avatar>
         <Dropdown overlay={menu} trigger={['click']}>
           <span className={style.headerUserName} onClick={(e) => e.preventDefault()}>
-            Test User <DownOutlined />
+            {userName} <DownOutlined />
           </span>
         </Dropdown>
       </div>

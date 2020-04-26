@@ -18,6 +18,11 @@
   cursor: pointer;
 }
 
+.avatar {
+  color: #f56a00;
+  background-color: #fde3cf;
+}
+
 .logo {
   height: 32px;
   margin: 16px;
