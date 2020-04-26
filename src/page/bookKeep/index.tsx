@@ -16,7 +16,8 @@ import {
 } from 'antd'
 import { MoneyCollectOutlined } from '@ant-design/icons'
 import style from './index.module.css'
-import { Catalog } from '@/utils/catalog.ts'
+import { Catalog } from '@/utils/catalog'
+import { Payment } from '@/utils/payment'
 
 interface Values {
   count: number
@@ -80,14 +81,25 @@ const ModalForm: React.FC<ModalFormProps> = ({ visible, onConfirm, onCancel }) =
             {Catalog.map((item) => {
               return (
                 <Option key={item.value} value={item.value}>
-                  {item.lable}
+                  {item.label}
                 </Option>
               )
             })}
           </Select>
         </Item>
         <Item name="paymentType" label="支付方式">
-          <Select></Select>
+          <Select allowClear optionLabelProp="label">
+            {Payment.map((item) => {
+              return (
+                <Option key={item.value} value={item.value} label={item.label}>
+                  <div>
+                    <span className={style.paymentIcon}>{item.icon}</span>
+                    {item.label}
+                  </div>
+                </Option>
+              )
+            })}
+          </Select>
         </Item>
         <Item name="remark" label="备注">
           <Input.TextArea allowClear></Input.TextArea>
@@ -108,7 +120,7 @@ const BookKeep: React.FC<{}> = () => {
   const getCatalogName = (catalog: string[]) => {
     return catalog.map((item: string) => {
       const _array = Catalog.filter((p) => p.value === item)
-      return _array[0].lable
+      return _array[0].label
     })
   }
   const getTotalCount = (records: Values[]): number => {
@@ -129,7 +141,9 @@ const BookKeep: React.FC<{}> = () => {
       >
         记一笔
       </Button>
+
       <Divider />
+
       <ModalForm
         visible={modalVisible}
         onConfirm={onConfirm}
@@ -137,6 +151,22 @@ const BookKeep: React.FC<{}> = () => {
           setModalVisible(false)
         }}
       ></ModalForm>
+
+      <Card title="今日统计" hoverable className={style.card} style={{ marginTop: '2rem' }}>
+        {recordItem.length === 0 ? (
+          <Empty description={false} />
+        ) : (
+          <Row>
+            <Col span={12}>
+              <Statistic title="消费数量" value={recordItem.length} />
+            </Col>
+            <Col span={12}>
+              <Statistic title="总金额" value={`¥ ${getTotalCount(recordItem)}`} />
+            </Col>
+          </Row>
+        )}
+      </Card>
+
       <Card title="今日消费记录" hoverable className={style.card}>
         {recordItem.length === 0 ? (
           <Empty description={false} />
@@ -150,20 +180,6 @@ const BookKeep: React.FC<{}> = () => {
               )
             })}
           </Timeline>
-        )}
-      </Card>
-      <Card title="今日统计" hoverable className={style.card} style={{ marginTop: '2rem' }}>
-        {recordItem.length === 0 ? (
-          <Empty description={false} />
-        ) : (
-          <Row>
-            <Col span={12}>
-              <Statistic title="记账条目" value={recordItem.length} />
-            </Col>
-            <Col span={12}>
-              <Statistic title="总金额" value={getTotalCount(recordItem)} />
-            </Col>
-          </Row>
         )}
       </Card>
     </div>
