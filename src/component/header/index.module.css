@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  justify-content: flex-end;
+  background: #fff;
+  padding: 0 4rem;
+}
+
+.headerUserName {
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.avatar {
+  color: #f56a00;
+  background-color: #fde3cf;
+}
