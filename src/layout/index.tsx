@@ -17,7 +17,7 @@ const LayoutComponent: React.FC<{}> = () => {
   const AuthRoute: React.FC<RouteMapType> = ({ path, componentPath, userType = '' }) => {
     if (userType !== 'pro' || isPro)
       return <Route key={path} path={path} component={loadComponent(componentPath)}></Route>
-    else return <Redirect to="/403"></Redirect>
+    else return <Redirect to="/unathorized"></Redirect>
   }
 
   useEffect(() => {

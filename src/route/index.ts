@@ -19,7 +19,7 @@ export const routeMap: RouteMapType[] = [
     userType: 'pro'
   },
   {
-    path: '/403',
+    path: '/Unathorized',
     componentPath: '403/index'
   },
   {
