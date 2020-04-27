@@ -16,9 +16,9 @@ interface ColumnType {
 }
 
 interface SearchParams {
-  timeRange?: moment.Moment[]
-  catalog?: string
-  paymentType?: string
+  timeRange: moment.Moment[]
+  catalog: string
+  paymentType: string
 }
 
 const Record: React.FC<{}> = () => {
@@ -30,7 +30,11 @@ const Record: React.FC<{}> = () => {
     } else return <span>{value.join(' / ')}</span>
   }
   const handleSearch = (value: SearchParams) => {
-    console.log(value)
+    const params: any = { ...value }
+    if (value.timeRange) {
+      params.timeRange = value.timeRange.map((item) => moment(item).format('YYYY-MM-DD'))
+    }
+    console.log(params)
   }
   const handleDelete = (e: any) => {
     console.log(e)
@@ -111,6 +115,7 @@ const Record: React.FC<{}> = () => {
       <Form
         form={form}
         className={style.filterForm}
+        initialValues={{ catalog: 'all', paymentType: 'all' }}
         onFinish={(form) => {
           handleSearch(form as SearchParams)
         }}
@@ -129,11 +134,14 @@ const Record: React.FC<{}> = () => {
           <Col span={6}>
             <Form.Item
               label="消费类别"
-              name="catelog"
+              name="catalog"
               labelCol={{ span: 6 }}
               wrapperCol={{ span: 10 }}
             >
               <Select allowClear>
+                <Select.Option key="all" value="all">
+                  全部
+                </Select.Option>
                 {Catalog.map((item) => {
                   return (
                     <Select.Option key={item.value} value={item.value}>
@@ -152,6 +160,9 @@ const Record: React.FC<{}> = () => {
               wrapperCol={{ span: 10 }}
             >
               <Select allowClear optionLabelProp="label">
+                <Select.Option value="all" label="全部">
+                  全部
+                </Select.Option>
                 {Payment.map((item) => {
                   return (
                     <Select.Option key={item.value} value={item.value} label={item.label}>
