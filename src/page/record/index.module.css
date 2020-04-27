@@ -1,0 +1,11 @@
+.actionGroup {
+  display: flex;
+}
+
+.paymentIcon {
+  margin-right: 10px;
+}
+
+.delete {
+  margin-left: 1.5rem;
+}
