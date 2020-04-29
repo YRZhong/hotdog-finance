@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useHistory, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Layout, Menu, Badge } from 'antd'
-import { MoneyCollectOutlined, AlignLeftOutlined, LineChartOutlined } from '@ant-design/icons'
+import {
+  MoneyCollectOutlined,
+  AlignLeftOutlined,
+  AreaChartOutlined,
+  LineChartOutlined,
+  PieChartOutlined,
+  BarChartOutlined
+} from '@ant-design/icons'
 import style from './index.module.css'
 
 interface MenuType {
@@ -27,8 +34,25 @@ const menu: MenuType[] = [
   {
     key: 'statistics',
     title: '统计',
-    icon: <LineChartOutlined />,
-    requirePro: true
+    icon: <AreaChartOutlined />,
+    requirePro: true,
+    children: [
+      {
+        key: 'pieChart',
+        title: '类别分析',
+        icon: <PieChartOutlined />
+      },
+      {
+        key: 'barChart',
+        title: '同比分析',
+        icon: <BarChartOutlined />
+      },
+      {
+        key: 'lineChart',
+        title: '趋势分析',
+        icon: <LineChartOutlined />
+      }
+    ]
   }
 ]
 
@@ -36,43 +60,60 @@ const { Sider } = Layout
 
 const Sidebar: React.FC<{ isPro: boolean }> = ({ isPro }) => {
   const { pathname } = useLocation()
-  const { listen } = useHistory()
-  const [defaultSelectedKey, setDefaultSelectedKey] = useState('')
   const [collapsed, setCollapsed] = useState(false)
+  const [defaultSelectedKey, setDefaultSelectedKey] = useState('')
+  // const [subMenuOpen, setSubMenuOpen] = useState(false)
   const updateSidebarMenu = (pathname: string) => {
     setDefaultSelectedKey(pathname.split('/')[1] === '' ? 'bookKeep' : pathname.split('/')[1])
   }
-
+  //监听url变化设置Link选中
   useEffect(() => {
     updateSidebarMenu(pathname)
-    return listen((location) => {
-      updateSidebarMenu(location.pathname)
-    })
-  }, []) //eslint-disable-line
+  }, [pathname])
+
+  const renderMenuItem = (item: MenuType) => {
+    return (
+      <Menu.Item key={item.key}>
+        <Link to={`/${item.key}`}>
+          {item.icon}
+          <span>
+            {item.title}
+            {item.requirePro && !isPro ? (
+              <Badge style={{ marginLeft: '10px' }} count={'Pro'} />
+            ) : null}
+          </span>
+        </Link>
+      </Menu.Item>
+    )
+  }
+
+  const renderSubMenu = (item: MenuType) => {
+    return (
+      <Menu.SubMenu
+        key={item.key}
+        title={
+          <span>
+            {item.icon}
+            {item.title}
+          </span>
+        }
+      >
+        {item.children?.map((children) => renderMenuItem(children))}
+      </Menu.SubMenu>
+    )
+  }
 
   return (
     <Sider collapsible collapsed={collapsed} onCollapse={() => setCollapsed(!collapsed)}>
       <div className={style.logo}>Hotdog Finance</div>
       <Menu
         theme="dark"
-        mode="inline"
+        mode="vertical"
         defaultSelectedKeys={[defaultSelectedKey]}
         selectedKeys={[defaultSelectedKey]}
       >
         {menu.map((item) => {
-          return (
-            <Menu.Item key={item.key}>
-              <Link to={`/${item.key}`}>
-                {item.icon}
-                <span>
-                  {item.title}
-                  {item.requirePro && !isPro ? (
-                    <Badge style={{ marginLeft: '10px' }} count={'Pro'} />
-                  ) : null}
-                </span>
-              </Link>
-            </Menu.Item>
-          )
+          return item.children && isPro ? renderSubMenu(item) : renderMenuItem(item)
         })}
       </Menu>
     </Sider>

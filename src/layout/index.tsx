@@ -16,7 +16,7 @@ const LayoutComponent: React.FC<{}> = () => {
   //判断登录和权限
   const AuthRoute: React.FC<RouteMapType> = ({ path, componentPath, userType = '' }) => {
     if (userType !== 'pro' || isPro)
-      return <Route key={path} path={path} component={loadComponent(componentPath)}></Route>
+      return <Route path={path} component={loadComponent(componentPath)}></Route>
     else return <Redirect to="/unathorized"></Redirect>
   }
 

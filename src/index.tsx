@@ -6,7 +6,13 @@ import LayoutComponent from './layout'
 import * as serviceWorker from './serviceWorker'
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/es/locale/zh_CN'
-import { BrowserRouter, Route, Switch, RouteComponentProps, withRouter } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  RouteComponentProps,
+  withRouter
+} from 'react-router-dom'
 
 const App: React.FC<RouteComponentProps> = () => {
   return (
@@ -23,9 +29,9 @@ const AppComponent = React.memo(withRouter(App))
 
 ReactDOM.render(
   <ConfigProvider locale={zhCN}>
-    <BrowserRouter>
+    <Router forceRefresh={false}>
       <AppComponent />
-    </BrowserRouter>
+    </Router>
   </ConfigProvider>,
   document.getElementById('root')
 )

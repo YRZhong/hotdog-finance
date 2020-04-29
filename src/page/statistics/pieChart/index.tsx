@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Statistics: React.FC<{}> = () => {
-  return <div>待开发</div>
+  return <div>pie</div>
 }
 
 export default Statistics

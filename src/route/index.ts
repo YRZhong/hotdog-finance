@@ -14,8 +14,18 @@ export const routeMap: RouteMapType[] = [
     componentPath: 'record/index'
   },
   {
-    path: '/statistics',
-    componentPath: 'statistics/index',
+    path: '/pieChart',
+    componentPath: 'statistics/pieChart/index',
+    userType: 'pro'
+  },
+  {
+    path: '/barChart',
+    componentPath: 'statistics/barChart/index',
+    userType: 'pro'
+  },
+  {
+    path: '/lineChart',
+    componentPath: 'statistics/lineChart/index',
     userType: 'pro'
   },
   {
