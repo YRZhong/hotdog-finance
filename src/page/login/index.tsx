@@ -4,7 +4,7 @@ import { Button, Form, Input, Card } from 'antd'
 import { useForm } from 'antd/es/form/util'
 import style from './index.module.css'
 
-const Login: React.FC<{}> = (props) => {
+const Login: React.FC<{}> = () => {
   const layout = {
     labelCol: { span: 4 },
     wrapperCol: { span: 16 }
@@ -31,7 +31,7 @@ const Login: React.FC<{}> = (props) => {
           </Form.Item>
           <Form.Item {...tailLayout}>
             <Button type="primary" htmlType="submit">
-              登陆
+              登录
             </Button>
           </Form.Item>
         </Form>
