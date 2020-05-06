@@ -5,7 +5,5 @@
 
 # Todo:
 
-- Subitem render
-- nivo 实现可视化
-- 封装 axios 请求
 - Mock 接口数据
+- 修改登录页面取消必填项，点击登录时再做校验

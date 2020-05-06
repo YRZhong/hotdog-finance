@@ -5,13 +5,14 @@ import { CatalogPieData, PaymentPieData } from '@/utils/pieData'
 import style from './index.module.css'
 import PieChart from './component/pieChart'
 
-const Statistics: React.FC<{}> = () => {
+const PieStatistics: React.FC<{}> = () => {
   const [data, setData] = useState<PieDatum[]>([])
   const [type, setType] = useState('catalog')
   const [time, setTime] = useState('week')
   const [tagText, setTagText] = useState('元')
 
   const getCatalogPieData = () => {
+    //随机数据用于测试
     const _data =
       type === 'catalog'
         ? CatalogPieData.map((item) => {
@@ -67,4 +68,4 @@ const Statistics: React.FC<{}> = () => {
   )
 }
 
-export default Statistics
+export default PieStatistics

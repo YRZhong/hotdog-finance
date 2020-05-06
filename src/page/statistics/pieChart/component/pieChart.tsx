@@ -3,7 +3,7 @@ import { ResponsivePie, PieDatum } from '@nivo/pie'
 const PieChart: React.FC<{ data: PieDatum[] }> = ({ data }) => {
   return (
     <ResponsivePie
-      margin={{ top: 40, right: 40, bottom: 40, left: 20 }}
+      margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
       data={data}
       legends={[
         {
@@ -14,7 +14,7 @@ const PieChart: React.FC<{ data: PieDatum[] }> = ({ data }) => {
           itemWidth: 100,
           itemHeight: 18,
           itemTextColor: '#999',
-          symbolSize: 18,
+          symbolSize: 20,
           symbolShape: 'circle',
           effects: [
             {
@@ -24,6 +24,43 @@ const PieChart: React.FC<{ data: PieDatum[] }> = ({ data }) => {
               }
             }
           ]
+        }
+      ]}
+      defs={[
+        {
+          id: 'lines',
+          type: 'patternLines',
+          background: 'inherit',
+          color: 'rgba(255, 255, 255, 0.3)',
+          rotation: -45,
+          lineWidth: 6,
+          spacing: 10
+        }
+      ]}
+      fill={[
+        {
+          match: {
+            id: '房租'
+          },
+          id: 'lines'
+        },
+        {
+          match: {
+            id: '房贷'
+          },
+          id: 'lines'
+        },
+        {
+          match: {
+            id: '支付宝'
+          },
+          id: 'lines'
+        },
+        {
+          match: {
+            id: '微信'
+          },
+          id: 'lines'
         }
       ]}
       sortByValue={true}
