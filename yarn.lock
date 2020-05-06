@@ -1194,6 +1194,45 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
+"@nivo/annotations@0.61.0":
+  version "0.61.0"
+  resolved "https://registry.npm.taobao.org/@nivo/annotations/download/@nivo/annotations-0.61.0.tgz#f09fc99f018e0d0c39f01ed9447e1a2cc0c5e6df"
+  integrity sha1-8J/JnwGODQw58B7ZRH4aLMDF5t8=
+  dependencies:
+    "@nivo/colors" "0.61.0"
+    "@nivo/core" "0.61.0"
+    lodash "^4.17.11"
+    react-motion "^0.5.2"
+
+"@nivo/axes@0.61.0":
+  version "0.61.0"
+  resolved "https://registry.npm.taobao.org/@nivo/axes/download/@nivo/axes-0.61.0.tgz#f22852b56f02d99867eb27fa3be349a75f749cbb"
+  integrity sha1-8ihStW8C2Zhn6yf6O+NJp190nLs=
+  dependencies:
+    "@nivo/core" "0.61.0"
+    d3-format "^1.3.2"
+    d3-time "^1.0.11"
+    d3-time-format "^2.1.3"
+    lodash "^4.17.11"
+    react-motion "^0.5.2"
+
+"@nivo/bar@^0.61.1":
+  version "0.61.1"
+  resolved "https://registry.npm.taobao.org/@nivo/bar/download/@nivo/bar-0.61.1.tgz#c29579b4018954a1c7a93d2d365c7878de4396f6"
+  integrity sha1-wpV5tAGJVKHHqT0tNlx4eN5DlvY=
+  dependencies:
+    "@nivo/annotations" "0.61.0"
+    "@nivo/axes" "0.61.0"
+    "@nivo/colors" "0.61.0"
+    "@nivo/core" "0.61.0"
+    "@nivo/legends" "0.61.1"
+    "@nivo/tooltip" "0.61.0"
+    d3-scale "^3.0.0"
+    d3-shape "^1.2.2"
+    lodash "^4.17.11"
+    react-motion "^0.5.2"
+    recompose "^0.30.0"
+
 "@nivo/colors@0.61.0":
   version "0.61.0"
   resolved "https://registry.npm.taobao.org/@nivo/colors/download/@nivo/colors-0.61.0.tgz#5af2a6d8b1d22c786950cc9fb07c216a80a541ff"
@@ -3699,7 +3738,7 @@ d3-scale@^3.0.0:
     d3-time "1"
     d3-time-format "2"
 
-d3-shape@^1.3.5:
+d3-shape@^1.2.2, d3-shape@^1.3.5:
   version "1.3.7"
   resolved "https://registry.npm.taobao.org/d3-shape/download/d3-shape-1.3.7.tgz#df63801be07bc986bc54f63789b4fe502992b5d7"
   integrity sha1-32OAG+B7yYa8VPY3ibT+UCmStdc=
@@ -3713,7 +3752,7 @@ d3-time-format@2, d3-time-format@^2.1.3:
   dependencies:
     d3-time "1"
 
-d3-time@1:
+d3-time@1, d3-time@^1.0.11:
   version "1.1.0"
   resolved "https://registry.npm.taobao.org/d3-time/download/d3-time-1.1.0.tgz#b1e19d307dae9c900b7e5b25ffc5dcc249a8a0f1"
   integrity sha1-seGdMH2unJALflsl/8XcwkmooPE=
@@ -6016,7 +6055,7 @@ isobject@^3.0.0, isobject@^3.0.1:
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
 
-isomorphic-fetch@^2.1.1:
+isomorphic-fetch@^2.1.1, isomorphic-fetch@^2.2.1:
   version "2.2.1"
   resolved "https://registry.npm.taobao.org/isomorphic-fetch/download/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
   integrity sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk=
@@ -8974,6 +9013,11 @@ qs@6.7.0:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
 
+qs@^6.9.1:
+  version "6.9.4"
+  resolved "https://registry.npm.taobao.org/qs/download/qs-6.9.4.tgz#9090b290d1f91728d3c22e54843ca44aea5ab687"
+  integrity sha1-kJCykNH5FyjTwi5UhDykSupatoc=
+
 qs@~6.5.2:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
@@ -11127,6 +11171,14 @@ ua-parser-js@^0.7.18:
   version "0.7.21"
   resolved "https://registry.npm.taobao.org/ua-parser-js/download/ua-parser-js-0.7.21.tgz#853cf9ce93f642f67174273cc34565ae6f308777"
   integrity sha1-hTz5zpP2QvZxdCc8w0Vlrm8wh3c=
+
+umi-request@^1.2.19:
+  version "1.2.19"
+  resolved "https://registry.npm.taobao.org/umi-request/download/umi-request-1.2.19.tgz#57ec16322506674f2d6392d553119829cedb1589"
+  integrity sha1-V+wWMiUGZ08tY5LVUxGYKc7bFYk=
+  dependencies:
+    isomorphic-fetch "^2.2.1"
+    qs "^6.9.1"
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
