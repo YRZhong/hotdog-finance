@@ -23,6 +23,7 @@ const LayoutComponent: React.FC<{}> = () => {
   useEffect(() => {
     console.log('token=====' + token)
   }, [token])
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sidebar isPro={isPro} />
@@ -46,6 +47,7 @@ const LayoutComponent: React.FC<{}> = () => {
                 <Redirect to="/login"></Redirect>
               )}
               <Redirect exact from="/" to="/bookKeep"></Redirect>
+              <Redirect exact from="/statistics" to="/pieChart"></Redirect>
               <Route component={loadComponent('404/index')}></Route>
             </Switch>
           </Suspense>
