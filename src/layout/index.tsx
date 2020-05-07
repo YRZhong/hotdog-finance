@@ -9,7 +9,7 @@ import style from './index.module.css'
 const { Content } = Layout
 
 /**Main Layout组件 */
-const LayoutComponent: React.FC<{}> = () => {
+const LayoutComponent: React.FC = () => {
   const loadComponent = (name: string) => lazy(() => import(`@/page/${name}`)) //动态引入组件
   const token = sessionStorage.getItem('token')
   const isPro = token?.startsWith('pro') || false //是否为Pro用户

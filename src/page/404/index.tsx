@@ -2,7 +2,7 @@ import React from 'react'
 import { Result, Button } from 'antd'
 import { useHistory } from 'react-router-dom'
 
-const NotFount: React.FC<{}> = () => {
+const NotFount: React.FC = () => {
   const history = useHistory()
   return (
     <div>

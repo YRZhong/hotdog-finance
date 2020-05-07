@@ -5,7 +5,7 @@ import style from './index.module.css'
 import BarChart from './component/barChart'
 import { testData } from '@/service/barTestData'
 
-const BarStatistics: React.FC<{}> = () => {
+const BarStatistics: React.FC = () => {
   const [data, setData] = useState<BarDatum[]>([])
   const [time, setTime] = useState('week')
   //随机生成测试数据

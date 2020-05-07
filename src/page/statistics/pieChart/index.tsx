@@ -5,7 +5,7 @@ import { CatalogPieData, PaymentPieData } from '@/utils/pieData'
 import style from './index.module.css'
 import PieChart from './component/pieChart'
 
-const PieStatistics: React.FC<{}> = () => {
+const PieStatistics: React.FC = () => {
   const [data, setData] = useState<PieDatum[]>([])
   const [type, setType] = useState('catalog')
   const [time, setTime] = useState('week')

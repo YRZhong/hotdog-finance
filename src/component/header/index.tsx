@@ -31,7 +31,7 @@ const HeaderBar: React.FC<{ isPro: boolean }> = ({ isPro }) => {
       </Menu>
     )
   }
-  const UserAvatar: React.FC<{}> = () => {
+  const UserAvatar: React.FC = () => {
     return isPro ? (
       <Badge count={'Pro'}>
         <Avatar className={style.avatar}>{userName.slice(0, 1).toUpperCase()}</Avatar>

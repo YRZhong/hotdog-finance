@@ -4,7 +4,7 @@ import { Button, Form, Input, Card } from 'antd'
 import { useForm } from 'antd/es/form/util'
 import style from './index.module.css'
 
-const Login: React.FC<{}> = () => {
+const Login: React.FC = () => {
   const layout = {
     labelCol: { span: 4 },
     wrapperCol: { span: 16 }

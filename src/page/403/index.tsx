@@ -1,7 +1,7 @@
 import React from 'react'
 import { Result, Button } from 'antd'
 
-const Unathorized: React.FC<{}> = () => {
+const Unathorized: React.FC = () => {
   return (
     <Result
       status="403"

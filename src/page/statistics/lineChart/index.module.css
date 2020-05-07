@@ -1,0 +1,13 @@
+.searchBar {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.searchItem {
+  margin-right: 1rem;
+}
+
+.chart {
+  height: 60vh;
+}

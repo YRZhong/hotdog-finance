@@ -110,7 +110,7 @@ const ModalForm: React.FC<ModalFormProps> = ({ visible, onConfirm, onCancel }) =
   )
 }
 
-const BookKeep: React.FC<{}> = () => {
+const BookKeep: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false)
   const [recordItem, setRecordItem] = useState<Values[]>([])
   const onConfirm = (values: Values) => {

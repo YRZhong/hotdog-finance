@@ -3,17 +3,17 @@ import { ResponsivePie, PieDatum } from '@nivo/pie'
 const PieChart: React.FC<{ data: PieDatum[] }> = ({ data }) => {
   return (
     <ResponsivePie
-      margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
+      margin={{ top: 40, right: 40, bottom: 80, left: 40 }}
       data={data}
       legends={[
         {
-          anchor: 'right',
-          direction: 'column',
-          itemsSpacing: 10,
-          translateY: 56,
+          anchor: 'bottom',
+          direction: 'row',
+          itemsSpacing: 8,
+          translateY: 80,
           itemWidth: 100,
-          itemHeight: 18,
-          itemTextColor: '#999',
+          itemHeight: 20,
+          itemOpacity: 0.75,
           symbolSize: 20,
           symbolShape: 'circle',
           effects: [
@@ -65,7 +65,7 @@ const PieChart: React.FC<{ data: PieDatum[] }> = ({ data }) => {
       ]}
       sortByValue={true}
       enableRadialLabels={false}
-      enableSlicesLabels={false}
+      animate={true}
       innerRadius={0.5}
       padAngle={0.7}
       cornerRadius={3}

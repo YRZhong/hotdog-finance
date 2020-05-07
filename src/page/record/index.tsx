@@ -21,7 +21,7 @@ interface SearchParams {
   paymentType: string
 }
 
-const Record: React.FC<{}> = () => {
+const Record: React.FC = () => {
   const [form] = Form.useForm()
   const { RangePicker } = DatePicker
   const getPaymentType = (value: string[] | undefined) => {

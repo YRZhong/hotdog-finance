@@ -60,12 +60,13 @@ const BarChart: React.FC<{ data: BarDatum[] }> = ({ data }) => {
           justify: false,
           translateX: 120,
           translateY: 0,
-          itemsSpacing: 2,
+          itemsSpacing: 8,
           itemWidth: 100,
           itemHeight: 20,
           itemDirection: 'left-to-right',
-          itemOpacity: 0.85,
+          itemOpacity: 0.75,
           symbolSize: 20,
+          symbolShape: 'circle',
           effects: [
             {
               on: 'hover',
