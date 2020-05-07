@@ -56,14 +56,13 @@ const ModalForm: React.FC<ModalFormProps> = ({ visible, onConfirm, onCancel }) =
     form.resetFields()
   }
 
+  const getData = async () => {
+    const data = await request.get('/rubbish/type?name=西瓜')
+    console.log(data)
+  }
+
   useEffect(() => {
-    request
-      .post('/page', {
-        data: {}
-      })
-      .then((res) => {
-        console.log(res)
-      })
+    getData()
   }, [])
 
   return (

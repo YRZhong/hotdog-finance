@@ -37,7 +37,11 @@ const errorHandler = (error: any) => {
 const request = extend({
   errorHandler,
   prefix: '/api',
-  timeout: 1000
+  timeout: 1000,
+  headers: {
+    app_id: 'shrtskinmibcjikk',
+    app_secret: 'SW91RDg5aFBKNE5NVlAxN0FzNktqdz09'
+  }
 })
 
 export default request

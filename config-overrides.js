@@ -12,10 +12,9 @@ const resolve = (dir) => path.join(__dirname, '.', dir)
 const devServerConfig = () => (config) => {
   return {
     ...config,
-    compress: true,
     proxy: {
       '/api': {
-        target: 'http://pe2t2t.natappfree.cc',
+        target: 'https://www.mxnzp.com',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/api'
