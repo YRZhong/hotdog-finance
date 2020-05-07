@@ -40,7 +40,7 @@ const LineChart: React.FC<{ data: Serie[] }> = ({ data }) => {
           direction: 'column',
           justify: false,
           translateX: 100,
-          translateY: 0,
+          translateY: 20,
           itemsSpacing: 8,
           itemDirection: 'left-to-right',
           itemWidth: 80,

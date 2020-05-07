@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Form,
   Input,
@@ -18,6 +18,7 @@ import { MoneyCollectOutlined } from '@ant-design/icons'
 import style from './index.module.css'
 import { Catalog } from '@/utils/catalog'
 import { Payment } from '@/utils/payment'
+import request from '@/request'
 
 interface Values {
   count: number
@@ -54,6 +55,16 @@ const ModalForm: React.FC<ModalFormProps> = ({ visible, onConfirm, onCancel }) =
     onCancel()
     form.resetFields()
   }
+
+  useEffect(() => {
+    request
+      .post('/page', {
+        data: {}
+      })
+      .then((res) => {
+        console.log(res)
+      })
+  }, [])
 
   return (
     <Modal

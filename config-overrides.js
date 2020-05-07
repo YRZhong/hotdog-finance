@@ -15,7 +15,7 @@ const devServerConfig = () => (config) => {
     compress: true,
     proxy: {
       '/api': {
-        target: 'https://www.mxnzp.com',
+        target: 'http://pe2t2t.natappfree.cc',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/api'

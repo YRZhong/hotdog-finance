@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Table, Button, Popconfirm, Form, DatePicker, Divider, Select, Row, Col } from 'antd'
 import { EditOutlined, DeleteOutlined, SearchOutlined } from '@ant-design/icons'
 import locale from 'antd/es/date-picker/locale/zh_CN'
@@ -7,6 +7,7 @@ import { Catalog } from '@/utils/catalog'
 import { Payment } from '@/utils/payment'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
+import request from '@/request'
 interface ColumnType {
   title: string
   key: string
@@ -109,6 +110,14 @@ const Record: React.FC = () => {
       remarks: 'asdads'
     }
   ]
+
+  // useEffect(() => {
+  //   request('/api/page', {
+  //     method: 'post'
+  //   }).then((res) => {
+  //     console.log(res)
+  //   })
+  // })
 
   return (
     <div>
