@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Table, Button, Popconfirm, Form, DatePicker, Divider, Select, Row, Col } from 'antd'
 import { EditOutlined, DeleteOutlined, SearchOutlined } from '@ant-design/icons'
+import ModalForm, { Values } from '@/component/bookModal'
 import locale from 'antd/es/date-picker/locale/zh_CN'
 import style from './index.module.css'
 import { Catalog } from '@/utils/catalog'
@@ -22,13 +23,18 @@ interface SearchParams {
 }
 
 const Record: React.FC = () => {
+  const [modalVisible, setModalVisible] = useState(false)
+  const [modalData, setModalData] = useState({})
+  const [currentRecord, setCurrentRecord] = useState('')
   const [form] = Form.useForm()
   const { RangePicker } = DatePicker
-  const getPaymentType = (value: string[] | undefined) => {
+
+  const getCatalogType = (value: string[] | undefined) => {
     if (value?.length === 0 || !value) {
       return <span>-</span>
     } else return <span>{value.join(' / ')}</span>
   }
+
   const handleSearch = (value: SearchParams) => {
     const params: any = { ...value }
     if (value.timeRange) {
@@ -36,9 +42,28 @@ const Record: React.FC = () => {
     }
     console.log(params)
   }
+
+  const handleEdit = (record: any) => {
+    setModalVisible(true)
+    //记录当前条目key
+    setCurrentRecord(record.key)
+    //设置Modal的预填数据
+    setModalData({
+      catalog: record.catalog,
+      count: record.count,
+      paymentType: record.paymentType,
+      remarks: record.remarks
+    })
+  }
+
   const handleDelete = (e: any) => {
     console.log(e)
   }
+
+  const onModalConfirm = (values: Values) => {
+    console.log(values)
+  }
+
   const columns: ColumnType[] = [
     {
       title: '时间',
@@ -50,14 +75,15 @@ const Record: React.FC = () => {
       title: '类别',
       dataIndex: 'catalog',
       key: 'catalog',
-      width: '15%'
+      width: '15%',
+      render: (text) => getCatalogType(text)
     },
     {
       title: '支付方式',
       dataIndex: 'paymentType',
       key: 'paymentType',
       width: '15%',
-      render: (text) => getPaymentType(text)
+      render: (text) => (text ? <span>{text}</span> : <span>-</span>)
     },
     {
       title: '金额',
@@ -77,7 +103,12 @@ const Record: React.FC = () => {
       key: 'action',
       render: (text, record) => (
         <span className={style.actionGroup}>
-          <Button type="link" icon={<EditOutlined />} className={style.edit} />
+          <Button
+            type="link"
+            icon={<EditOutlined />}
+            className={style.edit}
+            onClick={() => handleEdit(record)}
+          />
           <Popconfirm title="确认删除该记录吗?" onConfirm={() => handleDelete(record)}>
             <Button type="link" danger icon={<DeleteOutlined />} className={style.delete} />
           </Popconfirm>
@@ -92,14 +123,14 @@ const Record: React.FC = () => {
     {
       key: '1',
       time: '2020-01-01',
-      catalog: '娱乐',
-      paymentType: ['aa', 'bb'],
+      catalog: ['aa', 'bb'],
+      paymentType: '支付宝',
       count: '50'
     },
     {
       key: '2',
       time: '2020-02-22',
-      catalog: '娱乐',
+      catalog: ['娱乐'],
       count: '33',
       remarks: 'asdads'
     }
@@ -182,6 +213,14 @@ const Record: React.FC = () => {
       </Form>
       <Divider />
       <Table columns={columns} dataSource={data}></Table>
+      <ModalForm
+        visible={modalVisible}
+        onConfirm={onModalConfirm}
+        onCancel={() => {
+          setModalVisible(false)
+        }}
+        initialValue={modalData as Values}
+      ></ModalForm>
     </div>
   )
 }

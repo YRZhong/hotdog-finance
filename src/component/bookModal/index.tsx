@@ -9,16 +9,17 @@ export interface Values {
   count: number
   catalog: string[]
   paymentType: string
-  remark: string
+  remarks?: string
 }
 
 interface ModalFormProps {
   visible: boolean
   onConfirm: (values: Values) => void
   onCancel: () => void
+  initialValue?: Values
 }
 
-const ModalForm: React.FC<ModalFormProps> = ({ visible, onConfirm, onCancel }) => {
+const ModalForm: React.FC<ModalFormProps> = ({ visible, onConfirm, onCancel, initialValue }) => {
   const [form] = Form.useForm()
   const { Item } = Form
   const { Option } = Select
@@ -41,19 +42,25 @@ const ModalForm: React.FC<ModalFormProps> = ({ visible, onConfirm, onCancel }) =
     form.resetFields()
   }
 
-  const getData = async () => {
-    const data = await request.get('/rubbish/type?name=西瓜')
-    console.log(data)
+  // const getData = async () => {
+  //   const data = await request.get('/rubbish/type?name=西瓜')
+  //   console.log(data)
+  // }
+  const setInitialValue = () => {
+    if (initialValue) {
+      form.setFieldsValue(initialValue)
+    }
   }
 
   useEffect(() => {
-    getData()
-  }, [])
+    setInitialValue()
+  }, [initialValue]) //eslint-disable-line
 
   return (
     <Modal
+      getContainer={false}
       visible={visible}
-      title="创建新记账"
+      title={initialValue ? '修改记录' : '创建新记账'}
       okText="确认"
       cancelText="取消"
       maskClosable={false}
@@ -97,7 +104,7 @@ const ModalForm: React.FC<ModalFormProps> = ({ visible, onConfirm, onCancel }) =
             })}
           </Select>
         </Item>
-        <Item name="remark" label="备注">
+        <Item name="remarks" label="备注">
           <Input.TextArea allowClear></Input.TextArea>
         </Item>
       </Form>
